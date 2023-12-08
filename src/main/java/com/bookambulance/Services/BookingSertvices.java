@@ -3,7 +3,6 @@ package com.bookambulance.Services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.bookambulance.Interfaces.DataInterface;
 import com.bookambulance.Model.Booking;
 import com.bookambulance.Repository.BookingRepository;

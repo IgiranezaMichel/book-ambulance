@@ -3,6 +3,14 @@ type Location{
     name:String
     type:String
 }
+type locationQl{
+    name:String
+    type:String
+}
+type getLocation{
+    name:String
+    type:String
+}
 type User{
     id:ID
     name:String
@@ -27,12 +35,13 @@ input userQl{
     password:String
     role:String
 }
-input location{
+input locationQl{
     name:String
     type:String
 }
 type Mutation{
  addUser(input:userQl):_user
+ addLocation(input:locationQl):getLocation
 }
 type Query{
 getAllUser:[_user]
