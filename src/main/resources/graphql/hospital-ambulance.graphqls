@@ -45,4 +45,5 @@ type Mutation{
 }
 type Query{
 getAllUser:[_user]
+getAllLocation:Location
 }
