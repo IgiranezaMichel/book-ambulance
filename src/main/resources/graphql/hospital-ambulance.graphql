@@ -32,7 +32,7 @@ input location{
     type:String
 }
 type Mutation{
-
+ addUser(input:userQl):_user
 }
 type Query{
 getAllUser:[_user]
