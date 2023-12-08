@@ -19,6 +19,14 @@ type _user{
     email:String
     role:String 
 }
+input userQl{
+    name:String
+    gender:String
+    phoneNumber:String
+    email:String
+    password:String
+    role:String
+}
 type Mutation{
 
 }
