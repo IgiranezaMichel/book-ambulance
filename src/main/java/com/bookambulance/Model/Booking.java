@@ -11,6 +11,7 @@ import lombok.*;
 public class Booking {
     @Id  @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @ManyToOne()
     private User user;
     private Date bookingDate;
 }
