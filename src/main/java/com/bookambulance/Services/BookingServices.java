@@ -7,7 +7,7 @@ import com.bookambulance.Interfaces.DataInterface;
 import com.bookambulance.Model.Booking;
 import com.bookambulance.Repository.BookingRepository;
 
-public class BookingSertvices implements DataInterface<Booking>{
+public class BookingServices implements DataInterface<Booking>{
     @Autowired private BookingRepository bookingRepo;
     @Override
     public Booking saveOrUpdateData(Booking data) {
