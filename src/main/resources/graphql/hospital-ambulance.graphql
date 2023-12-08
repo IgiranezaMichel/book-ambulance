@@ -27,6 +27,10 @@ input userQl{
     password:String
     role:String
 }
+input location{
+    name:String
+    type:String
+}
 type Mutation{
 
 }
