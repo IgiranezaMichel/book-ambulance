@@ -8,21 +8,23 @@ import com.bookambulance.Interfaces.DataInterface;
 import com.bookambulance.Model.Hospital;
 import com.bookambulance.Repository.HospitalRepository;
 
-public class HospitalServices implements DataInterface<Hospital>{
+public class HospitalServices implements DataInterface<Hospital,Long>{
     @Autowired private HospitalRepository hospitalRepository;
     @Override
     public Hospital saveOrUpdateData(Hospital data) {
         return hospitalRepository.save(data);
     }
-
-    @Override
-    public void deleteDataById(Hospital id) {
-       hospitalRepository.delete(id);
-    }
-
     @Override
     public List<Hospital> getAllData() {
        return hospitalRepository.findAll();
+    }
+    @Override
+    public void deleteDataById(Long id) {
+      hospitalRepository.deleteById(id);
+    }
+    @Override
+    public Hospital findById(Long id) {
+       return hospitalRepository.findById(id).orElse(null);
     }
 
 }
