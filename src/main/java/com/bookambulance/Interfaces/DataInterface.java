@@ -2,8 +2,9 @@ package com.bookambulance.Interfaces;
 
 import java.util.List;
 
-public interface DataInterface <T>{
+public interface DataInterface <T,I>{
 T saveOrUpdateData(T data);
-void deleteDataById(T id);
+void deleteDataById(I id);
+T findById(I id);
 List<T> getAllData();
 }

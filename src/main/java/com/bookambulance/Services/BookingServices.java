@@ -7,7 +7,7 @@ import com.bookambulance.Interfaces.DataInterface;
 import com.bookambulance.Model.Booking;
 import com.bookambulance.Repository.BookingRepository;
 
-public class BookingServices implements DataInterface<Booking>{
+public class BookingServices implements DataInterface<Booking,Long>{
     @Autowired private BookingRepository bookingRepo;
     @Override
     public Booking saveOrUpdateData(Booking data) {
@@ -18,10 +18,14 @@ public class BookingServices implements DataInterface<Booking>{
     public List<Booking> getAllData() {
        return bookingRepo.findAll();
     }
+   @Override
+   public void deleteDataById(Long id) {
+      bookingRepo.deleteById(id);
+   }
 
-    @Override
-    public void deleteDataById(Booking id) {
-     bookingRepo.delete(id);
-    }
+   @Override
+   public Booking findById(Long id) {
+     return bookingRepo.findById(id).orElse(null);
+   }
 
 }
