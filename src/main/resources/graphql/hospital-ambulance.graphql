@@ -1,0 +1,27 @@
+type Location{
+    id:ID
+    name:String
+    type:String
+}
+type User{
+    id:ID
+    name:String
+    gender:String
+    phoneNumber:String
+    email:String
+    password:String
+    role:String
+}
+type _user{
+    name:String
+    gender:String
+    phoneNumber:String
+    email:String
+    role:String 
+}
+type Mutation{
+
+}
+type Query{
+getAllUser:[_user]
+}
