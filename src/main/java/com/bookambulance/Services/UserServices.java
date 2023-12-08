@@ -10,7 +10,7 @@ import com.bookambulance.Model.User;
 import com.bookambulance.Repository.UserRepository;
 
 @Service
-public class UserServices implements DataInterface<User>{
+public class UserServices implements DataInterface<User,Long>{
 @Autowired private UserRepository userRepository;
 
 @Override
@@ -19,12 +19,17 @@ public User saveOrUpdateData(User data) {
 }
 
 @Override
-public void deleteDataById(User id) {
-   userRepository.delete(id);
+public void deleteDataById(Long id) {
+   userRepository.deleteById(id);
 }
 
 @Override
 public List<User> getAllData() {
    return userRepository.findAll();
+}
+
+@Override
+public User findById(Long id) {
+    return userRepository.findById(id).orElse(null);
 }
 }
