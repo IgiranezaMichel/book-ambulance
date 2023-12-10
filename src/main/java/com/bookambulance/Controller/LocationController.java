@@ -14,6 +14,7 @@ public class LocationController {
     @Autowired private LocationServices locationServices;
     @MutationMapping()
     public Location addLocation(@Argument(name = "input") locationInput locationQl){
+        locationQl.setLocation(locationServices.findById(locationQl.getLocationFk()));
         return locationServices.saveOrUpdateData(locationQl.locationData());
     }
     @QueryMapping()
