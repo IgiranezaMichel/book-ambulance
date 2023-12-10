@@ -10,7 +10,6 @@ public locationInput(Location location){
 }
 private String name;
 private String type;
-private long locationFk;
 public Location locationData(){
     return new Location(this.name,this.type,this.location);
 }
