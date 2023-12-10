@@ -12,7 +12,7 @@ import com.bookambulance.Services.LocationServices;
 public class LocationController {
     @Autowired private LocationServices locationServices;
     @MutationMapping()
-    public Location saveLocation(@Argument(name = "input") locationQl locationQl){
+    public Location addLocation(@Argument(name = "input") locationQl locationQl){
         return locationServices.saveOrUpdateData(locationQl.locationData());
     }
 }
