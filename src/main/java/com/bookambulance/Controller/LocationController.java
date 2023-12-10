@@ -15,27 +15,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LocationController {
     @Autowired private LocationServices locationServices;
-    @MutationMapping()
-    public Location addLocation(@Argument(name = "input") locationInput locationQl){
+    @MutationMapping() public Location addLocation(@Argument(name = "input") locationInput locationQl){
         Location location=new Location(); 
         try {
             if(!(locationQl.getLocationFk()==Long.parseLong("0")))
             location=locationServices.findById(locationQl.getLocationFk());
+            if(!locationQl.equals(""))
+            {
+                return new Location(Long.parseLong(locationQl.getId()), locationQl.getName(), locationQl.getType(), location, null, null);
+            }
          } catch (Exception e) {
             log.error(e.getMessage());
          }
         return locationServices.saveOrUpdateData(new Location(locationQl.getName(), locationQl.getType(), location));
     }
-    @QueryMapping()
-    public Location findLocationById(@Argument String id)
-    {   try {
-        return locationServices.findById(Long.parseLong(id));
-    } catch (Exception e) {
-        return null;
-    }
-    }
-    @MutationMapping()
-    public String deleteLocation(@Argument String id){
+    @MutationMapping() public String deleteLocation(@Argument String id)
+    {
         try {
             if(!id.equals(""))
             {
@@ -53,5 +48,13 @@ public class LocationController {
            return "Location doesn't exist";
         }
     }
+    @QueryMapping() public Location findLocationById(@Argument String id)
+    {   try {
+        return locationServices.findById(Long.parseLong(id));
+    } catch (Exception e) {
+        return null;
+    }
+    }
+    
         
 }
