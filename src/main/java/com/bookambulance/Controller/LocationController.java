@@ -18,6 +18,11 @@ public class LocationController {
     }
     @QueryMapping()
     public Location findLocationById(@Argument String id)
-    {   System.out.println(id);
-        return locationServices.findById(Long.parseLong(id));}
+    {   try {
+        return locationServices.findById(Long.parseLong(id));
+    } catch (Exception e) {
+        return null;
+    }
+}
+        
 }
