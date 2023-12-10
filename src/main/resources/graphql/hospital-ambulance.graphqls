@@ -1,11 +1,9 @@
 type Location{
     id:ID
-    name:String
-    type:String
-}
-type locationQl{
-    name:String
-    type:String
+    name:String!
+    type:String!
+    location:Location
+    locationList:[Location]
 }
 type User{
     id:ID
@@ -16,14 +14,15 @@ type User{
     password:String
     role:String
 }
-type _user{
+type userQl{
+    id:ID
     name:String
     gender:String
     phoneNumber:String
     email:String
     role:String 
 }
-input userQl{
+input userInput{
     name:String
     gender:String
     phoneNumber:String
@@ -31,15 +30,17 @@ input userQl{
     password:String
     role:String
 }
-input locationQl{
+input locationInput{
     name:String
     type:String
+   locationFk:Int
 }
 type Mutation{
- addUser(input:userQl):_user
- addLocation(input:locationQl):Location
+ addUser(input:userInput):userQl
+ addLocation(input:locationInput):Location
 }
 type Query{
-getAllUser:[_user]
+getAllUser:[userQl]
 getAllLocation:Location
+findLocationById(id:String):Location
 }

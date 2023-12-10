@@ -20,8 +20,9 @@ private Location location;
 private List<Hospital>hospitalLocation;
 @OneToMany(mappedBy = "location")
 private List<Location>locationList;
-public Location(String name2, String type2) {
+public Location(String name2, String type2,Location location) {
     this.name=name2;
     this.type=type2;
+    this.location=location;
 }
 }
