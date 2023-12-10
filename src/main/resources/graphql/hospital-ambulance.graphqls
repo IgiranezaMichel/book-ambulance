@@ -7,10 +7,6 @@ type locationQl{
     name:String
     type:String
 }
-type getLocation{
-    name:String
-    type:String
-}
 type User{
     id:ID
     name:String
@@ -41,7 +37,7 @@ input locationQl{
 }
 type Mutation{
  addUser(input:userQl):_user
- addLocation(input:locationQl):getLocation
+ addLocation(input:locationQl):Location
 }
 type Query{
 getAllUser:[_user]
