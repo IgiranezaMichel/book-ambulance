@@ -9,13 +9,22 @@ import org.springframework.stereotype.Controller;
 import com.bookambulance.GraphQlModels.locationInput;
 import com.bookambulance.Model.Location;
 import com.bookambulance.Services.LocationServices;
+
+import lombok.extern.slf4j.Slf4j;
 @Controller
+@Slf4j
 public class LocationController {
     @Autowired private LocationServices locationServices;
     @MutationMapping()
     public Location addLocation(@Argument(name = "input") locationInput locationQl){
-        locationQl.setLocation(locationServices.findById(locationQl.getLocationFk()));
-        return locationServices.saveOrUpdateData(locationQl.locationData());
+        Location location=new Location(); 
+        try {
+            if(!(locationQl.getLocationFk()==Long.parseLong("0")))
+            location=locationServices.findById(locationQl.getLocationFk());
+         } catch (Exception e) {
+            log.error(e.getMessage());
+         }
+        return locationServices.saveOrUpdateData(new Location(locationQl.getName(), locationQl.getType(), location));
     }
     @QueryMapping()
     public Location findLocationById(@Argument String id)
@@ -24,6 +33,25 @@ public class LocationController {
     } catch (Exception e) {
         return null;
     }
-}
+    }
+    @MutationMapping()
+    public String deleteLocation(@Argument String id){
+        try {
+            if(!id.equals(""))
+            {
+                Location location=locationServices.findById(Long.parseLong(id));
+                if(!(location==null)){
+                    locationServices.deleteDataById(Long.parseLong(id));
+                    log.info(location.getName()+" has been removed successfully");
+                    return location.getName() +" Deleted successfully";
+                }
+                else return "Location not found";
+            }
+            else return "specify Location please";
+        } catch (Exception e) {
+            log.info("Error happen=>"+e.getMessage());
+           return "Location doesn't exist";
+        }
+    }
         
 }

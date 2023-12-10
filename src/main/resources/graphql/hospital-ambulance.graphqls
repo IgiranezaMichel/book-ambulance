@@ -33,11 +33,12 @@ input userInput{
 input locationInput{
     name:String
     type:String
-   locationFk:Int
+    locationFk:Int
 }
 type Mutation{
  addUser(input:userInput):userQl
  addLocation(input:locationInput):Location
+ deleteLocation(id:String):String
 }
 type Query{
 getAllUser:[userQl]
