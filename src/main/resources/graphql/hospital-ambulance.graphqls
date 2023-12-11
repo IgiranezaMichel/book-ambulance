@@ -19,6 +19,9 @@ type Hospital{
  name:String
  location:Location   
 }
+type Booking{
+    
+}
 input userInput{
     identity:ID
     name:String
