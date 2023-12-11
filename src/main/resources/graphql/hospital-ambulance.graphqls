@@ -1,3 +1,4 @@
+scalar Date
 type Location{
     id:ID
     name:String!
@@ -20,7 +21,9 @@ type Hospital{
  location:Location   
 }
 type Booking{
-    
+    id:ID
+    user:User
+    bookingDate:Date
 }
 input userInput{
     identity:ID
