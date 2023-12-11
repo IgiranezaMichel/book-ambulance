@@ -1,4 +1,4 @@
-package com.bookambulance;
+package com.bookambulance.Controller;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class HospitalController {
 @Autowired private LocationServices locationServices;
 @MutationMapping() public Hospital addHospital(@Argument(name = "input")HospitalInput HospitalInput)
 {   HospitalInput.setLocation(locationServices.findById(Long.parseLong(HospitalInput.getLocationId())));
-    return hospitalServices.saveOrUpdateData(HospitalInput);
+    return hospitalServices.saveOrUpdateData(new Hospital(HospitalInput.getId(),HospitalInput.getName(),HospitalInput.getLocation()));
 }
 
 @MutationMapping() public String deleHospital(@Argument long id){

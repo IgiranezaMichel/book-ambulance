@@ -17,7 +17,7 @@ type User{
 type Hospital{
  id:ID
  name:String
- locationId:String   
+ location:Location   
 }
 input userInput{
     identity:ID
