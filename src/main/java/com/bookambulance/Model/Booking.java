@@ -1,17 +1,17 @@
 package com.bookambulance.Model;
-import java.sql.Date;
-
+import java.time.Instant;
+import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Data
+@ToString
 public class Booking {
     @Id  @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne()
     private User user;
-    private Date bookingDate;
+    private LocalDateTime bookingDate=LocalDateTime.now();
 }
