@@ -29,6 +29,10 @@ public class HospitalController {
         return "Hospital not found";
     }
 }
+@QueryMapping() public  Hospital getHospitalById(@Argument long id)
+{
+    return hospitalServices.findById(id);
+}
 @QueryMapping() public List<Hospital> getAllHospital()
 {
     return hospitalServices.getAllData();
