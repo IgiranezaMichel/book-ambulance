@@ -25,6 +25,10 @@ type Booking{
     user:User
     bookingDate:Date
 }
+input bookingInput{
+    user:User
+    bookingDate:Date 
+}
 input userInput{
     identity:ID
     name:String
@@ -48,6 +52,7 @@ input HospitalInput{
 type Mutation{
  addUser(input:userInput):User
  deleteUser(id:ID):String
+ addOrUpdateBooking(input:bookingInput):Booking
  addHospital(input:HospitalInput):Hospital
  deleteHospital(id:ID):String
  addLocation(input:locationInput):Location
