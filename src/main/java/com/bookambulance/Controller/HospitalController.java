@@ -21,8 +21,10 @@ public class HospitalController {
     return hospitalServices.saveOrUpdateData(new Hospital(HospitalInput.getId(),HospitalInput.getName(),HospitalInput.getLocation()));
 }
 
-@MutationMapping() public String deleHospital(@Argument long id){
-    Hospital hospital=hospitalServices.findById(id);
+@MutationMapping() public String deleHospital(@Argument String id){
+   if(!id.equals(""))
+   {
+     Hospital hospital=hospitalServices.findById(Long.parseLong(id));
     if(!(hospital==null)){
         hospitalServices.deleteDataById(hospital.getId());
         return hospital.getName() +" Deleted successfully";
@@ -30,6 +32,10 @@ public class HospitalController {
     else{
         return "Hospital not found";
     }
+   }
+   else{
+    return "Please specify Hospital you want to delete";
+   }
 }
 @QueryMapping() public  Hospital getHospitalById(@Argument long id)
 {
