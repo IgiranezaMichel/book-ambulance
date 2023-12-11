@@ -14,15 +14,8 @@ type User{
     password:String
     role:String
 }
-type userQl{
-    id:ID
-    name:String
-    gender:String
-    phoneNumber:String
-    email:String
-    role:String 
-}
 input userInput{
+    identity:ID
     name:String
     gender:String
     phoneNumber:String
@@ -37,12 +30,12 @@ input locationInput{
     locationFk:Int
 }
 type Mutation{
- addUser(input:userInput):userQl
+ addUser(input:userInput):User
  addLocation(input:locationInput):Location
  deleteLocation(id:String):String
 }
 type Query{
-getAllUser:[userQl]
+getAllUser:[User]
 getAllLocation:Location
 findLocationById(id:String):Location
 }
