@@ -13,5 +13,14 @@ public class HospitalController {
 @Autowired private HospitalServices hospitalServices;
 @MutationMapping() public Hospital addHospital(@Argument(name = "input")HospitalInput HospitalInput)
 {return hospitalServices.saveOrUpdateData(HospitalInput);}
-
+@MutationMapping() public String deleHospital(@Argument long id){
+    Hospital hospital=hospitalServices.findById(id);
+    if(!(hospital==null)){
+        hospitalServices.deleteDataById(hospital.getId());
+        return hospital.getName() +" Deleted successfully";
+    }
+    else{
+        return "Hospital not found";
+    }
+}
 }
