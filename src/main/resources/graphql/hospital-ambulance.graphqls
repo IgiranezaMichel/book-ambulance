@@ -36,13 +36,13 @@ input locationInput{
 }
 input HospitalInput{
     id:ID
- name:String
- locationId:String   
+    name:String
+    locationId:String   
 }
 type Mutation{
  addUser(input:userInput):User
- addHospital(Hospital:Hospital):Hospital
  deleteUser(id:ID):String
+ addHospital(input:HospitalInput):Hospital
  addLocation(input:locationInput):Location
  deleteLocation(id:String):String
 }
