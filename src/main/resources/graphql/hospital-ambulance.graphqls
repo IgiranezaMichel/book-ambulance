@@ -43,6 +43,7 @@ type Mutation{
  addUser(input:userInput):User
  deleteUser(id:ID):String
  addHospital(input:HospitalInput):Hospital
+ deleteHospital(id:ID):Hospital
  addLocation(input:locationInput):Location
  deleteLocation(id:String):String
 }
