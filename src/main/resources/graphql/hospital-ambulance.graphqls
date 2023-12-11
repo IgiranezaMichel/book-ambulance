@@ -1,4 +1,5 @@
-scalar Date
+scalar LocalDateTime
+scalar Long
 type Location{
     id:ID
     name:String!
@@ -23,11 +24,11 @@ type Hospital{
 type Booking{
     id:ID
     user:User
-    bookingDate:Date
+    bookingDate:LocalDateTime
 }
 input bookingInput{
-    user:User
-    bookingDate:Date 
+    userId:Long
+    bookingDate:LocalDateTime 
 }
 input userInput{
     identity:ID
