@@ -10,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import com.bookambulance.GraphQlModels.HospitalInput;
 import com.bookambulance.Model.Hospital;
 import com.bookambulance.Services.HospitalServices;
+import com.bookambulance.Services.LocationServices;
 
 @Controller
 public class HospitalController {
 @Autowired private HospitalServices hospitalServices;
+@Autowired private LocationServices locationServices;
 @MutationMapping() public Hospital addHospital(@Argument(name = "input")HospitalInput HospitalInput)
-{
+{   HospitalInput.setLocation(locationServices.findById(Long.parseLong(HospitalInput.getLocationId())));
     return hospitalServices.saveOrUpdateData(HospitalInput);
 }
 
