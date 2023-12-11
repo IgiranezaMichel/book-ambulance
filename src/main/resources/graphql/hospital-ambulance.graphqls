@@ -14,6 +14,11 @@ type User{
     password:String
     role:String
 }
+type Hospital{
+ id:ID
+ name:String
+ locationId:String   
+}
 input userInput{
     identity:ID
     name:String
@@ -29,8 +34,14 @@ input locationInput{
     type:String
     locationFk:Int
 }
+input HospitalInput{
+    id:ID
+ name:String
+ locationId:String   
+}
 type Mutation{
  addUser(input:userInput):User
+ addHospital(Hospital:Hospital):Hospital
  deleteUser(id:ID):String
  addLocation(input:locationInput):Location
  deleteLocation(id:String):String
