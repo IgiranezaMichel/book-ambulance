@@ -3,10 +3,12 @@ package com.bookambulance.Services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bookambulance.Interfaces.DataInterface;
 import com.bookambulance.Model.Booking;
 import com.bookambulance.Repository.BookingRepository;
-
+@Service
 public class BookingServices implements DataInterface<Booking,Long>{
     @Autowired private BookingRepository bookingRepo;
     @Override
