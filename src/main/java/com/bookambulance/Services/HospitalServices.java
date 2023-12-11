@@ -3,11 +3,12 @@ package com.bookambulance.Services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bookambulance.Interfaces.DataInterface;
 import com.bookambulance.Model.Hospital;
 import com.bookambulance.Repository.HospitalRepository;
-
+@Service
 public class HospitalServices implements DataInterface<Hospital,Long>{
     @Autowired private HospitalRepository hospitalRepository;
     @Override
