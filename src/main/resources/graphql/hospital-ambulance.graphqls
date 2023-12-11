@@ -31,6 +31,7 @@ input locationInput{
 }
 type Mutation{
  addUser(input:userInput):User
+ deleteUser(id:ID):String
  addLocation(input:locationInput):Location
  deleteLocation(id:String):String
 }

@@ -18,4 +18,19 @@ public class UserController {
       userinput.setIdentity("0");
     return userServices.saveOrUpdateData(new User(Long.parseLong(userinput.getIdentity()), userinput.getName(), userinput.getGender(), userinput.getPhoneNumber(), userinput.getEmail(), userinput.getPassword(), userinput.getRole(), null));
 }
+@MutationMapping() public String deleteUser(@Argument long id){
+  try {
+    User user=userServices.findById(id);
+    if(user!=null)
+       {
+        userServices.deleteDataById(user.getId());
+        return user.getName()+" Removed Successfully";
+      }
+      else{
+        return "User not found";
+      }
+  } catch (Exception e) {
+    return "Server error";
+  }
+}
 }
