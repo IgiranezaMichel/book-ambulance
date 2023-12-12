@@ -31,6 +31,10 @@ public Location findById(Long id) {
 public List<Location> getAllData() {
   return locationRepository.findAll();
 }
+
+public List<Location> getAllProvinces() {
+    return locationRepository.findByType("PROVINCE");
+}
     
 
 }

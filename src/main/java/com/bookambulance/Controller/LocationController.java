@@ -1,4 +1,5 @@
 package com.bookambulance.Controller;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -55,6 +56,9 @@ public class LocationController {
         return null;
     }
     }
-    
+    @QueryMapping() public List<Location> getAllProvince(){
+        return locationServices.getAllProvinces();
+    }
+ 
         
 }

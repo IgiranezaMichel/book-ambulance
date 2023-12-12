@@ -54,6 +54,7 @@ type Mutation{
  addUser(input:userInput):User
  deleteUser(id:ID):String
  addOrUpdateBooking(input:bookingInput):Booking
+ deleteBookingById(id:Long):String
  addHospital(input:HospitalInput):Hospital
  deleteHospital(id:ID):String
  addLocation(input:locationInput):Location
@@ -61,7 +62,10 @@ type Mutation{
 }
 type Query{
 getAllUser:[User]
-getAllLocation:Location
+findBookingById(id:Long):Booking
+getListOfLocationById(id:Long):[Location]
+getAllProvince:[Location]
+getAllLocation:[Location]
 findLocationById(id:String):Location
 getAllHospital:[Hospital]
 getHospitalById(id:ID):Hospital
