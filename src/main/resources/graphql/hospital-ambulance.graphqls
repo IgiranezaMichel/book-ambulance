@@ -62,11 +62,12 @@ type Mutation{
 }
 type Query{
 getAllUser:[User]
+findUserById(id:Long):User
 findBookingById(id:Long):Booking
 getListOfLocationById(id:Long):[Location]
 getAllProvince:[Location]
 getAllLocation:[Location]
-findLocationById(id:String):Location
+findLocationById(id:ID!):Location
 getAllHospital:[Hospital]
 getHospitalById(id:ID):Hospital
 }
