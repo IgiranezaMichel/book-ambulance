@@ -9,6 +9,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import com.bookambulance.GraphQlModels.userInput;
+import com.bookambulance.Model.Location;
 import com.bookambulance.Model.User;
 import com.bookambulance.Services.UserServices;
 
@@ -39,4 +40,11 @@ public class UserController {
 @QueryMapping() public List<User> getAllUser(){
 return userServices.getAllData();
 }
+  @QueryMapping() public User findUserById(@Argument String id)
+    {   try {
+        return userServices.findById(Long.parseLong(id));
+    } catch (Exception e) {
+        return null;
+    }
+    }
 }
